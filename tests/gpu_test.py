@@ -1,7 +1,7 @@
 import pytest
 import torch
 
-from torchinfo import summary
+from torchinfo_modified import summary
 
 
 @pytest.mark.skipif(not torch.cuda.is_available(), reason="GPU must be enabled.")

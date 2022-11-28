@@ -5,7 +5,7 @@ import random
 import torchvision  # type: ignore[import]  # pylint: disable=unused-import  # noqa
 from tqdm import trange  # type: ignore[import]  # pylint: disable=unused-import  # noqa
 
-from torchinfo import summary  # pylint: disable=unused-import  # noqa
+from torchinfo_modified import summary  # pylint: disable=unused-import  # noqa
 
 
 def profile() -> None:

@@ -1,6 +1,6 @@
 from .enums import ColumnSettings, Mode, RowSettings, Units, Verbosity
 from .model_statistics import ModelStatistics
-from .torchinfo import summary
+from .torchinfo_modified import summary
 
 __all__ = (
     "summary",

@@ -5,9 +5,9 @@ from typing import Iterator
 
 import pytest
 
-from torchinfo import ModelStatistics
-from torchinfo.formatting import HEADER_TITLES, ColumnSettings
-from torchinfo.torchinfo import clear_cached_forward_pass
+from torchinfo_modified import ModelStatistics
+from torchinfo_modified.formatting import HEADER_TITLES, ColumnSettings
+from torchinfo_modified.torchinfo_modified import clear_cached_forward_pass
 
 
 def pytest_addoption(parser: pytest.Parser) -> None:

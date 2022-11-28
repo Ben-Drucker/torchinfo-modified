@@ -102,7 +102,7 @@ def summary(
                 input_data / input_size contains the batch dimension, which is used
                 in all calculations. Else, expand all tensors to contain the batch_dim.
                 Specifying batch_dim can be an runtime optimization, since if batch_dim
-                is specified, torchinfo uses a batch size of 1 for the forward pass.
+                is specified, torchinfo_modified uses a batch size of 1 for the forward pass.
                 Default: None
 
         cache_forward_pass (bool):
@@ -144,7 +144,7 @@ def summary(
                 Default: None
 
         dtypes (List[torch.dtype]):
-                If you use input_size, torchinfo assumes your input uses FloatTensors.
+                If you use input_size, torchinfo_modified assumes your input uses FloatTensors.
                 If your model use a different data type, specify that dtype.
                 For multiple inputs, specify the size of both inputs, and
                 also specify the types of each parameter here.
@@ -176,7 +176,7 @@ def summary(
 
     Return:
         ModelStatistics object
-                See torchinfo/model_statistics.py for more information.
+                See torchinfo_modified/model_statistics.py for more information.
     """
     input_data_specified = input_data is not None or input_size is not None
     if col_names is None:
@@ -299,7 +299,7 @@ def forward_pass(
         print(traceback.format_exc(), flush=True)
         print("--------------------------------------------------------", flush=True)
         raise RuntimeError(
-            "Failed to run torchinfo. See above stack traces for more details. "
+            "Failed to run torchinfo_modified. See above stack traces for more details. "
             f"Executed layers up to: {executed_layers}"
         ) from e
     finally:

@@ -3,8 +3,8 @@ import torch
 from pytest import approx
 
 from tests.fixtures.models import LinearModel, LSTMNet, SingleInputNet
-from torchinfo import summary
-from torchinfo.model_statistics import ModelStatistics
+from torchinfo_modified import summary
+from torchinfo_modified.model_statistics import ModelStatistics
 
 
 @pytest.mark.skipif(

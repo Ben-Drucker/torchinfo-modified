@@ -8,9 +8,9 @@ authors:
     email: tyep@cs.stanford.edu
 identifiers:
   - type: url
-    value: 'https://github.com/TylerYep/torchinfo'
+    value: 'https://github.com/Ben-Drucker/torchinfo-modified'
     description: View model summaries in PyTorch!
-repository-code: 'https://github.com/TylerYep/torchinfo'
+repository-code: 'https://github.com/Ben-Drucker/torchinfo-modified'
 abstract: >-
   Torchinfo provides information complementary to
   what is provided by print(your_model) in PyTorch.

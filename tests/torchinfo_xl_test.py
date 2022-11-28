@@ -4,8 +4,8 @@ import torchvision  # type: ignore[import]
 
 from tests.fixtures.genotype import GenotypeNetwork  # type: ignore[attr-defined]
 from tests.fixtures.tmva_net import TMVANet  # type: ignore[attr-defined]
-from torchinfo import summary
-from torchinfo.enums import ColumnSettings
+from torchinfo_modified import summary
+from torchinfo_modified.enums import ColumnSettings
 
 
 def test_ascii_only() -> None:

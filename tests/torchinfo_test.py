@@ -40,8 +40,8 @@ from tests.fixtures.models import (
     SingleInputNet,
     UninitializedParameterModel,
 )
-from torchinfo import ColumnSettings, summary
-from torchinfo.enums import Units, Verbosity
+from torchinfo_modified import ColumnSettings, summary
+from torchinfo_modified.enums import Units, Verbosity
 
 
 def test_basic_summary() -> None:
