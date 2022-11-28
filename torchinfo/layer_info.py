@@ -97,7 +97,7 @@ class LayerInfo:
         def nested_list_size(inputs: Sequence[Any]) -> tuple[list[int], int]:
             """Flattens nested list size."""
             if hasattr(inputs, "tensors"):
-                return nested_list_size(inputs.tensors)
+                return nested_list_size(inputs.tensors)  # type: ignore[attr-defined]
             if (
                 isinstance(inputs, torch.Tensor)
                 or not hasattr(inputs, "__getitem__")
@@ -119,10 +119,22 @@ class LayerInfo:
         elif (
             isinstance(inputs, (list, tuple)) and inputs and hasattr(inputs[0], "data")
         ):
-            size = list(inputs[0].data.size())
-            elem_bytes = inputs[0].data.element_size()
-            if batch_dim is not None:
-                size = size[:batch_dim] + [1] + size[batch_dim + 1 :]
+            elem_bytes = 0
+            size_l = []
+            for input in inputs:
+                try:
+                    size = list(input.data.size())
+                    elem_bytes += input.data.element_size()
+                    if batch_dim is not None:
+                        size = size[:batch_dim] + [1] + size[batch_dim + 1 :]
+                    if len(inputs) > 1:
+                        size_l.append(size)
+                    else:
+                        size_l = size
+                except:
+                    pass
+            size = size_l
+
 
         elif isinstance(inputs, dict):
             # TODO avoid overwriting the previous size every time

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import sys
 import warnings
+import traceback
 from typing import (
     Any,
     Callable,
@@ -223,7 +224,7 @@ def summary(
         summary_list, correct_input_size, get_total_memory_used(x), formatting
     )
     if verbose > Verbosity.QUIET:
-        print(results)
+        print(results, flush=True)
     return results
 
 
@@ -283,7 +284,7 @@ def forward_pass(
                 f"Specified model mode ({list(Mode)}) not recognized: {mode}"
             )
 
-        with torch.no_grad():
+        with torch.no_grad():  # type: ignore[no-untyped-call]
             if isinstance(x, (list, tuple)):
                 _ = model.to(device)(*x, **kwargs)
             elif isinstance(x, dict):
@@ -294,6 +295,9 @@ def forward_pass(
                 raise ValueError("Unknown input type")
     except Exception as e:
         executed_layers = [layer for layer in summary_list if layer.executed]
+        print("--------------------- STACK TRACES ---------------------", flush=True)
+        print(traceback.format_exc(), flush=True)
+        print("--------------------------------------------------------", flush=True)
         raise RuntimeError(
             "Failed to run torchinfo. See above stack traces for more details. "
             f"Executed layers up to: {executed_layers}"
